@@ -46,5 +46,5 @@ function checkGuess(guess, target) {
 
 };
 function restartGame(){
-    location.reload();
+    window.location.reload();
 };
