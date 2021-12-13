@@ -3,10 +3,14 @@
     <head>
         <meta charset="UTF-8" />
         <title>Color Guessing Game</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <h1>Color Guessing Game</h1>
-        <button type="button" onclick="runGame()">Start Game!</button>
+        <div>
+            <h1>Color Guessing Game</h1>
+            <button type="button" id="start" onclick="runGame()">Start Game!</button>
+            <button type="button" id="restart" onclick="restartGame()">Restart Game</button>
+        </div>
         <script type="text/javascript" src="ColorGame.js"></script>
     </body>
 </html>

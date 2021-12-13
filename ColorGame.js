@@ -1,13 +1,13 @@
-let COLORS_ARRAY = ['blue', 'cyan', 'gold', 'gray', 'green', 'magenta', 'orange', 'red', 'white', 'yellow'];
-var ColorSting = COLORS_ARRAY.toString().split(",").join(", ")
+let COLORS_ARRAY = ['magenta', 'gray', 'blue', 'yellow', 'cyan', 'gold',  'green', 'orange', 'red', 'white'];
+let ColorSort = COLORS_ARRAY.sort();
+var ColorSting = ColorSort.toString().split(",").join(", ")
 let guess;
 let correct = false;
 const targetIndex = Math.floor(Math.random()*10);
-const target = COLORS_ARRAY[targetIndex];
+const target = ColorSort[targetIndex];
 let numTries = 0; 
 
 function runGame() {
-    let correct = false;
     do {
         guess = prompt('I am thinking of one of these colors:\n\n'+ ColorSting +'\n\nWhat color am I thinking of?\n');
         if(guess === null){
@@ -21,28 +21,30 @@ function runGame() {
 
 function checkGuess(guess, target) {
 
-    if(COLORS_ARRAY.indexOf(guess) < 0){
+    if(ColorSort.indexOf(guess) < 0){
 
-        alert('Color not recognized')
+        alert('Color not recognized & you has tried: '+numTries)
         numTries ++
 
-    }else if(COLORS_ARRAY.indexOf(guess) < COLORS_ARRAY.indexOf(target)){
+    }else if(ColorSort.indexOf(guess) < ColorSort.indexOf(target)){
 
-        alert('guess is incorrect & is higher than target & you has tried:'+numTries);
+        alert('guess is incorrect & is higher than target & you has tried: '+numTries);
         numTries ++
 
-    }else if(COLORS_ARRAY.indexOf(guess) > COLORS_ARRAY.indexOf(target)){
+    }else if(ColorSort.indexOf(guess) > ColorSort.indexOf(target)){
 
-        alert('guess is incorrect & is lower than target & you has tried:'+numTries);
+        alert('guess is incorrect & is lower than target & you has tried: '+numTries);
         numTries ++
 
     }else{
 
         alert('Congratulations!, you guess in '+numTries+' tries')
-        document.body.style.background = guess.toString(); 
-        correct = true
+        document.body.style.background = guess; 
+        document.getElementById("start").disabled = 'true';
+        return correct = true;
     }
 
-    return correct;
-
+};
+function restartGame(){
+    location.reload();
 };
